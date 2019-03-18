@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 
 import 'top_bar/component.dart';
 import 'nav_bar/component.dart';
+import 'tag_list/component.dart';
 import 'effect.dart';
 import 'reducer.dart';
 import 'state.dart';
@@ -18,6 +19,7 @@ class IndexPage extends Page<IndexPageState, dynamic> {
             slots: {
               'topBar': TopBar().asDependent(TopbarConnector()),
               'navBar': NavBar().asDependent(TopbarConnector()),
+              'tagList': TagList().asDependent(TagListConnector()),
             }
           )
   );

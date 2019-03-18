@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'tag_list/state.dart';
 
-enum IndexPageActionEnum { update, updateTopbarVisible }
+enum IndexPageActionEnum { update, updateTopbarVisible, updateTagList }
 
 class IndexPageActionCreator {
   static Action update(dynamic message) {
@@ -10,5 +11,10 @@ class IndexPageActionCreator {
   static Action updateTopbarVisible(bool topbarVisible) {
     return Action(IndexPageActionEnum.updateTopbarVisible,
         payload: topbarVisible);
+  }
+
+  static Action updateTagList(List<TagState> tagList) {
+    return Action(IndexPageActionEnum.updateTagList,
+        payload: tagList);
   }
 }

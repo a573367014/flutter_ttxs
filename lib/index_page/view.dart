@@ -19,43 +19,6 @@ final List<Map<String, dynamic>> linkData = [
   }
 ];
 
-// 标签
-Widget getTagItem() {
-  return Container(
-    margin: EdgeInsets.symmetric(horizontal: 4),
-    decoration: BoxDecoration(
-        color: Colors.grey, borderRadius: BorderRadius.circular(6)),
-    child: Stack(alignment: Alignment(0, 0.7), children: [
-      ClipRRect(
-          borderRadius: BorderRadius.circular(6),
-          child: Image.network(
-              'https://picsum.photos/200/300?image=' +
-                  Random().nextInt(1000).toString(),
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover)),
-      Text(
-        '做活动',
-        style: new TextStyle(fontSize: 13, color: Colors.white),
-      ),
-    ]),
-  );
-}
-
-// 标签列表
-Widget getTagList() {
-  return Container(
-    height: 80,
-    child: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 12),
-        scrollDirection: Axis.horizontal,
-        itemCount: 20,
-        itemBuilder: (BuildContext context, int position) {
-          return getTagItem();
-        }),
-  );
-}
-
 // 标题
 Widget getTitle(String title) {
   return Container(
@@ -146,7 +109,7 @@ Widget buildView(IndexPageState state, Dispatch dispatch, ViewService service) {
                   controller: state.sController1,
                   child: Column(
                     children: <Widget>[
-                      getTagList(),
+                      service.buildComponent('tagList'),
                       getTitle('今日推荐'),
                       getTemplateList(116, 208),
                       getTitle('今日推荐'),

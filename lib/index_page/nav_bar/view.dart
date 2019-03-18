@@ -16,7 +16,7 @@ Widget buildNavBar(
         : [],
   );
   return Container(
-      height: !topbarVisible ? 60 : 70,
+      height: 60,
       padding: EdgeInsets.only(left: 4, right: 16),
       decoration: BoxDecoration(
           color: Colors.white,
