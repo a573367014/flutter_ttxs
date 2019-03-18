@@ -16,8 +16,8 @@ class IndexPage extends Page<IndexPageState, dynamic> {
           view: buildView,
           dependencies: Dependencies(
             slots: {
-              'topBar': TopBar().asDependent(EmptyConnector()),
-              'navBar': NavBar().asDependent(EmptyConnector()),
+              'topBar': TopBar().asDependent(TopbarConnector()),
+              'navBar': NavBar().asDependent(TopbarConnector()),
             }
           )
   );

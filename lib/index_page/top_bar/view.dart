@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart';
 
 // 顶部条
-Widget buildTopBar(state, Dispatch dispatch, ViewService viewService) {
-  return Container(
+Widget buildTopBar(bool topbarVisible, Dispatch dispatch, ViewService viewService) {
+  return !topbarVisible ? Container(height: 0, width: 0,) : Container(
       height: 55,
       decoration: BoxDecoration(
+          color: Colors.white,
           border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.0),

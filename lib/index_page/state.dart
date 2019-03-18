@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class IndexPageState implements Cloneable<IndexPageState> {
   dynamic message;
+  bool topbarVisible;
   ScrollController sController1;
   ScrollController sController2;
   ScrollController sController3;
@@ -11,6 +12,7 @@ class IndexPageState implements Cloneable<IndexPageState> {
   IndexPageState clone() {
     return IndexPageState()
       ..message = message
+      ..topbarVisible = topbarVisible
       ..sController1 = sController1;
   }
 }
@@ -18,18 +20,19 @@ class IndexPageState implements Cloneable<IndexPageState> {
 IndexPageState initState(dynamic params) {
   final IndexPageState state = IndexPageState();
   state.message = '初始化state';
+  state.topbarVisible = true;
   state.sController1 = ScrollController();
   state.sController2 = ScrollController();
   state.sController3 = ScrollController();
   return state;
 }
 
-
-class EmptyConnector extends ConnOp<IndexPageState, dynamic> {
+class TopbarConnector extends ConnOp<IndexPageState, bool> {
   @override
   get(IndexPageState state) {
+    return state.topbarVisible;
   }
 
   @override
-  void set(IndexPageState state, dynamic substate) {}
+  void set(IndexPageState state, bool topbarVisible);
 }
