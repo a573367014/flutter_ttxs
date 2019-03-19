@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-
+output.json.dart
 node_modules
 
 # IntelliJ related
