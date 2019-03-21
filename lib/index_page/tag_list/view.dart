@@ -10,10 +10,10 @@ Widget getTagItem(TagState data) {
     child: Stack(alignment: Alignment(0, 0.7), children: [
       ClipRRect(
           borderRadius: BorderRadius.circular(6),
-          child: Image.network(data.url,
+          child: Image.network(data.styleInfo.imgUrl,
               width: 80, height: 80, fit: BoxFit.cover)),
       Text(
-        data.name,
+        data.keyword,
         style: new TextStyle(fontSize: 13, color: Colors.white),
       ),
     ]),

@@ -5,18 +5,12 @@ import 'network.dart';
 class OrmRequest{
   String _path;
   Dio _http = dio;
-  Function _toModel;
 
-  OrmRequest(restPath, {Map pathParams, Dio http, Function toModel}) {
+  OrmRequest(restPath, {Map pathParams, Dio http}) {
     final urlTokens = parse(restPath);
 
-    this._toModel = toModel;
     this._path = tokensToFunction(urlTokens)(pathParams);
     this._http = _http ?? this._http;
-  }
-
-  dataToModel(Response res) {
-    return _toModel(res.data);
   }
 
   Future find({data, Options options, CancelToken cancelToken}) {

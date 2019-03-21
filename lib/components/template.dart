@@ -33,8 +33,7 @@ Widget getBaseTemplate(double width, double height) {
       ClipRRect(
           borderRadius: BorderRadius.circular(6),
           child: Image.network(
-              'https://picsum.photos/200/300?image=' +
-                  Random().nextInt(1000).toString(),
+              'https://picsum.photos/200/300?image=' + Random().nextInt(1000).toString(),
               width: width,
               height: height,
               fit: BoxFit.cover)),

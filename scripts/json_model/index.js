@@ -1,4 +1,4 @@
-const { getType, toModelClassName, createMapModel, createListModel } = require('./util');
+const { getType, toModelClassName, createMapModel, createListModel, createListState, createMapState } = require('./util');
 const fs = require('fs');
 const path = require('path');
 const name = process.argv[2];
@@ -42,7 +42,6 @@ function forCreactor(pChildren, data) {
             }
         } else if (type === 'Map') {
             subData.children = [];
-
             subData.className = toModelClassName(k + suffix);
             forCreactor(subData.children, val);
         }
@@ -59,7 +58,7 @@ function forOutput(node) {
     let result = '';
     node.children.forEach(child => {
         if(child.className) {
-            result += child.type.indexOf('Map') !== -1 ? createMapModel(child) : createListModel(child);
+            result += child.type.indexOf('Map') !== -1 ? createMapState(child) : createListState(child);
             result += forOutput(child);
         }
     });
@@ -75,7 +74,7 @@ function main () {
 
     let result = forOutput({children});
 
-    fs.writeFileSync(path.join(__dirname, `../../lib/models/${name}.json.dart`), result);
+    // fs.writeFileSync(path.join(__dirname, `../../lib/models/${name}.json.dart`), result);
     fs.writeFileSync(path.join(__dirname, '../../output.json.dart'), result);
     console.log(JSON.stringify(children[0], null ,4));
 }

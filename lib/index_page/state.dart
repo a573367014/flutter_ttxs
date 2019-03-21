@@ -6,7 +6,7 @@ import 'tag_list/state.dart';
 class IndexPageState implements Cloneable<IndexPageState> {
   dynamic message;
   bool topbarVisible;
-  List<TagState> tagList;
+  List<TagState> tagList = [];
 
   ScrollController sController1;
   ScrollController sController2;

@@ -15,7 +15,7 @@ function getType(val) {
     }
 
     if(_.isNumber(val)) {
-        return 'double';
+        return val.toString().indexOf('.') > -1 ? 'double' : 'int';
     }
 
     if(_.isArray(val)) {
@@ -32,17 +32,17 @@ function getType(val) {
 function createMapModel(node) {
     return `
     \nclass ${node.className} {
-        ${node.children.map(child => `${child.className || child.type} ${child.name};`)
+        ${node.children.map(child => `${child.className || child.type} ${plus.camelize(child.name)};`)
             .toString()
             .replace(/,/g, '\n')}
 
         ${node.className}({
-            ${node.children.map(child => `this.${child.name}`)}
+            ${node.children.map(child => `this.${plus.camelize(child.name)}`)}
         });
 
         factory ${node.className}.fromJson(Map<String, dynamic> json) {
             return ${node.className}(
-                ${node.children.map(child => `${child.name}: ${
+                ${node.children.map(child => `${plus.camelize(child.name)}: ${
                     child.className ?
                         `${child.className}.fromJson(json['${child.name}'])`:
                         `json['${child.name}']`
@@ -52,8 +52,8 @@ function createMapModel(node) {
 
         Map<String, dynamic> toJson() => {
             ${node.children.map(child => `'${child.name}': ${
-                child.className ? (child.name + '.toJson()'
-            ) : child.name}`)}
+                child.className ? (plus.camelize(child.name) + '.toJson()'
+            ) : plus.camelize(child.name)}`)}
         };
     }`
 }
@@ -67,17 +67,82 @@ function createListModel(node) {
         final List<${childClassName}> list;
         ${node.className}(this.list);
 
-        factory ${node.className}.fromJson(List<${child.type}> list) {
-            List<${childClassName}> newItems = list.map((json) => ${childClassName}.fromJson(json)).toList();
-            return ${node.className}(newItems);
+        factory ${node.className}.fromJson(List<dynamic> parsedJson) {
+            List<${childClassName}> _list = List<${childClassName}>();
+            _list = parsedJson.map((json) => ${childClassName}.fromJson(json)).toList();
+            return ${node.className}(_list);
         }
-      
-        List<Map> toJson() => list.map((item) => item.toJson()).toList();
+
+        List<dynamic> toJson() => list.map((item) => item.toJson()).toList();
     }`;
+}
+
+function createMapState(node) {
+    return `
+    \nclass ${node.className} implements Cloneable<${node.className}> {
+        ${node.children.map(child => `${child.className || child.type} ${plus.camelize(child.name)};`)
+            .toString()
+            .replace(/,/g, '\n')}
+
+        ${node.className}({
+            ${node.children.map(child => `this.${plus.camelize(child.name)}`)}
+        });
+
+        factory ${node.className}.fromJson(Map<String, dynamic> json) {
+            return ${node.className}(
+                ${node.children.map(child => `${plus.camelize(child.name)}: ${
+                    child.className ?
+                        `${child.className}.fromJson(json['${child.name}'])`:
+                        `json['${child.name}']`
+                }`)}
+            );
+        }
+
+        Map<String, dynamic> toJson() => {
+            ${node.children.map(child => `'${child.name}': ${
+                child.className ? (plus.camelize(child.name) + '.toJson()'
+            ) : plus.camelize(child.name)}`)}
+        };
+
+        @override
+        ${node.className} clone() {
+          return ${node.className}()
+            ${node.children.map(
+                child => `..${plus.camelize(child.name)} = ${plus.camelize(child.name)}\n`
+            ).toString()
+            .replace(/,/g, '\n')};
+        }
+    }`.replace(/JsonModel/g, 'State');
+}
+
+function createListState(node) {
+    const child = node.children[0];
+    const childClassName = child.className || child.type;
+
+    return `
+    \nclass ${node.className} implements Cloneable<${node.className}> {
+        final List<${childClassName}> list;
+        ${node.className}(this.list);
+
+        factory ${node.className}.fromJson(List<dynamic> parsedJson) {
+            List<${childClassName}> _list = List<${childClassName}>();
+            _list = parsedJson.map((json) => ${childClassName}.fromJson(json)).toList();
+            return ${node.className}(_list);
+        }
+
+        List<dynamic> toJson() => list.map((item) => item.toJson()).toList();
+
+        @override
+        ${node.className} clone() {
+          return ${node.className}(list);
+        }
+    }`.replace(/JsonModel/g, 'State');
 }
 module.exports = {
     getType,
     toModelClassName,
     createMapModel,
-    createListModel
+    createListModel,
+    createMapState,
+    createListState
 }
