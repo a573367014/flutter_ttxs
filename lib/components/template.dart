@@ -32,8 +32,9 @@ Widget getBaseTemplate(double width, double height) {
     child: Stack(children: [
       ClipRRect(
           borderRadius: BorderRadius.circular(6),
+        //Random().nextInt(1000).toString()
           child: Image.network(
-              'https://picsum.photos/200/300?image=' + Random().nextInt(1000).toString(),
+              'https://picsum.photos/200/300?image=4',
               width: width,
               height: height,
               fit: BoxFit.cover)),

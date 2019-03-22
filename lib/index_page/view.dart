@@ -105,10 +105,9 @@ Widget buildView(IndexPageState state, Dispatch dispatch, ViewService service) {
             service.buildComponent('navBar'),
             Expanded(
               child: TabBarView(children: <Widget>[
-                SingleChildScrollView(
+                ListView(
                   controller: state.sController1,
-                  child: Column(
-                    children: <Widget>[
+                  children: <Widget>[
                       service.buildComponent('tagList'),
                       getTitle('今日推荐'),
                       getTemplateList(116, 208),
@@ -175,7 +174,6 @@ Widget buildView(IndexPageState state, Dispatch dispatch, ViewService service) {
                       getBottomLinkList(state)
                     ],
                   ),
-                ),
                 SingleChildScrollView(
                   controller: state.sController1,
                   child: Column(

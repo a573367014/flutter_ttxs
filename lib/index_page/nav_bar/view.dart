@@ -3,18 +3,9 @@ import 'package:fish_redux/fish_redux.dart';
 
 // 顶部条
 Widget buildNavBar(
-    bool topbarVisible, Dispatch dispatch, ViewService viewService) {
-  final borderColor = !topbarVisible ? Color(0xffeeeeee) : Colors.transparent;
-  final rightDom = Row(
-    children: !topbarVisible
-        ? [
-            Icon(IconData(0xe60d, fontFamily: 'iconfont'), size: 18),
-            Padding(
-                padding: EdgeInsets.only(left: 5, top: 1),
-                child: Text('搜索', style: TextStyle(fontSize: 16)))
-          ]
-        : [],
-  );
+    bool topBarVisible, Dispatch dispatch, ViewService viewService) {
+  final borderColor = !topBarVisible ? Color(0xffeeeeee) : Colors.transparent;
+
   return Container(
       height: 60,
       padding: EdgeInsets.only(left: 4, right: 16),
@@ -35,7 +26,15 @@ Widget buildNavBar(
               tabs: ['推荐', '图片', '视频']
                   .map((menuItem) => Tab(text: menuItem))
                   .toList()),
-          rightDom
+          Offstage(
+            offstage: topBarVisible,
+            child: Row(children: [
+              Icon(IconData(0xe60d, fontFamily: 'iconfont'), size: 18),
+              Padding(
+                  padding: EdgeInsets.only(left: 5, top: 1),
+                  child: Text('搜索', style: TextStyle(fontSize: 16)))
+            ]),
+          )
         ],
       ));
 }

@@ -15,11 +15,13 @@ Effect<IndexPageState> buildEffect() {
 
 void _init(Action action, Context<IndexPageState> ctx) {
   print('effect init');
+
   // 监听滚动事件
   final crl = ctx.state.sController1;
   crl.addListener(() {
     if(ctx.state.topbarVisible != crl.offset < 50) {
       ctx.dispatch(IndexPageActionCreator.updateTopbarVisible(!ctx.state.topbarVisible));
+      ctx.state.topBarState.controller.animateTo(ctx.state.topbarVisible ? 0 : 55);
     }
   });
 

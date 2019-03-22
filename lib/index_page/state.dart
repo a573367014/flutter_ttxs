@@ -1,13 +1,13 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-
+import 'top_bar/state.dart';
 import 'tag_list/state.dart';
 
 class IndexPageState implements Cloneable<IndexPageState> {
-  dynamic message;
   bool topbarVisible;
   List<TagState> tagList = [];
 
+  TopBarState topBarState;
   ScrollController sController1;
   ScrollController sController2;
   ScrollController sController3;
@@ -15,7 +15,7 @@ class IndexPageState implements Cloneable<IndexPageState> {
   @override
   IndexPageState clone() {
     return IndexPageState()
-      ..message = message
+      ..topBarState = topBarState
       ..topbarVisible = topbarVisible
       ..tagList = tagList
       ..sController1 = sController1;
@@ -24,23 +24,34 @@ class IndexPageState implements Cloneable<IndexPageState> {
 
 IndexPageState initState(dynamic params) {
   final IndexPageState state = IndexPageState();
-  state.message = '初始化state';
   state.topbarVisible = true;
 
+  state.topBarState = TopBarState();
   state.sController1 = ScrollController();
   state.sController2 = ScrollController();
   state.sController3 = ScrollController();
   return state;
 }
 
-class TopbarConnector extends ConnOp<IndexPageState, bool> {
+class NavbarConnector extends ConnOp<IndexPageState, bool> {
   @override
   get(IndexPageState state) {
     return state.topbarVisible;
   }
 
-  @override
   void set(IndexPageState state, bool topbarVisible);
+}
+
+class TopbarConnector extends ConnOp<IndexPageState, TopBarState> {
+  @override
+  get(IndexPageState state) {
+    return state.topBarState;
+  }
+
+  @override
+  void set(IndexPageState state, TopBarState topBarState) {
+    state.topBarState = topBarState.clone();
+  }
 }
 
 class TagListConnector extends ConnOp<IndexPageState, List<TagState>> {
