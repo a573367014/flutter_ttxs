@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'state.dart';
 
-Widget getTagItem(TagState data) {
+Widget getTagItem(KeywordState data) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 4),
     decoration: BoxDecoration(
@@ -22,7 +22,7 @@ Widget getTagItem(TagState data) {
 
 // 顶部条
 Widget buildTagList(
-    List<TagState> tagList, Dispatch dispatch, ViewService viewService) {
+    List<KeywordState> tagList, Dispatch dispatch, ViewService viewService) {
   return Container(
     height: 80,
     margin: EdgeInsets.only(top: 10),

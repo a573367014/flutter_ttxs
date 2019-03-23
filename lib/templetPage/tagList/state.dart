@@ -1,34 +1,35 @@
+
 import 'package:fish_redux/fish_redux.dart';
 
-class TagListState implements Cloneable<TagListState> {
-  final List<TagState> list;
-  TagListState(this.list);
+class KeywordListState implements Cloneable<KeywordListState> {
+  final List<KeywordState> list;
+  KeywordListState(this.list);
 
-  factory TagListState.fromJson(
+  factory KeywordListState.fromJson(
       List<dynamic> parsedJson) {
-    List<TagState> _list = List<TagState>();
-    _list = parsedJson.map((json) => TagState.fromJson(json)).toList();
-    return TagListState(_list);
+    List<KeywordState> _list = List<KeywordState>();
+    _list = parsedJson.map((json) => KeywordState.fromJson(json)).toList();
+    return KeywordListState(_list);
   }
 
   List<dynamic> toJson() => list.map((item) => item.toJson()).toList();
 
   @override
-  TagListState clone() {
-    return TagListState(list);
+  KeywordListState clone() {
+    return KeywordListState(list);
   }
 }
 
-class TagState implements Cloneable<TagState> {
+class KeywordState implements Cloneable<KeywordState> {
   int keywordId;
   String keyword;
   StyleInfoState styleInfo;
   String jumpUrl;
 
-  TagState({this.keywordId, this.keyword, this.styleInfo, this.jumpUrl});
+  KeywordState({this.keywordId, this.keyword, this.styleInfo, this.jumpUrl});
 
-  factory TagState.fromJson(Map<String, dynamic> json) {
-    return TagState(
+  factory KeywordState.fromJson(Map<String, dynamic> json) {
+    return KeywordState(
         keywordId: json['keyword_id'],
         keyword: json['keyword'],
         styleInfo: StyleInfoState.fromJson(json['style_info']),
@@ -43,8 +44,8 @@ class TagState implements Cloneable<TagState> {
       };
 
   @override
-  TagState clone() {
-    return TagState()
+  KeywordState clone() {
+    return KeywordState()
       ..keywordId = keywordId
       ..keyword = keyword
       ..styleInfo = styleInfo

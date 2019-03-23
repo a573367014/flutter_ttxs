@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 Dio initDio() {
   // 或者通过传递一个 `options`来创建dio实例
   final options = BaseOptions(
-      baseUrl: 'https://www.xx.com/api',
+      baseUrl: 'https://www.rel.ttxsapp.com/api/miniprogram',
       connectTimeout: 5000,
       receiveTimeout: 3000);
 

@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'tag_list/state.dart';
+import 'tagList/state.dart';
 
 enum IndexPageActionEnum { update, updateTopbarVisible, updateTagList }
 
@@ -13,7 +13,7 @@ class IndexPageActionCreator {
         payload: topbarVisible);
   }
 
-  static Action updateTagList(List<TagState> tagList) {
+  static Action updateTagList(List<KeywordState> tagList) {
     return Action(IndexPageActionEnum.updateTagList,
         payload: tagList);
   }

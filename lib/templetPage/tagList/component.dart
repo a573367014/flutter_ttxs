@@ -4,7 +4,7 @@ import 'state.dart';
 import 'view.dart';
 
 
-class TagList extends Component<List<TagState>> {
+class TagList extends Component<List<KeywordState>> {
   TagList() : super(
       view: buildTagList
   );

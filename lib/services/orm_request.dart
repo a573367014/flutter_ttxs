@@ -13,12 +13,12 @@ class OrmRequest{
     this._http = _http ?? this._http;
   }
 
-  Future find({data, Options options, CancelToken cancelToken}) {
+  Future find(Map<String, dynamic> data, {Options options, CancelToken cancelToken}) {
     return _http.get(_path,
         queryParameters: data, options: options, cancelToken: cancelToken);
   }
 
-  Future select({data, Options options, CancelToken cancelToken}) {
+  Future select(Map<String, dynamic> data, {Options options, CancelToken cancelToken}) {
     return _http.get(_path,
         queryParameters: data, options: options, cancelToken: cancelToken);
   }

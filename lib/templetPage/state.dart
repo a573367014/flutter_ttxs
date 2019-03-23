@@ -1,11 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'top_bar/state.dart';
-import 'tag_list/state.dart';
+import 'topBar/state.dart';
+import 'tagList/state.dart';
 
 class IndexPageState implements Cloneable<IndexPageState> {
   bool topbarVisible;
-  List<TagState> tagList = [];
+  List<KeywordState> tagList = [];
 
   TopBarState topBarState;
   ScrollController sController1;
@@ -33,6 +33,7 @@ IndexPageState initState(dynamic params) {
   return state;
 }
 
+// connector
 class NavbarConnector extends ConnOp<IndexPageState, bool> {
   @override
   get(IndexPageState state) {
@@ -54,12 +55,12 @@ class TopbarConnector extends ConnOp<IndexPageState, TopBarState> {
   }
 }
 
-class TagListConnector extends ConnOp<IndexPageState, List<TagState>> {
+class TagListConnector extends ConnOp<IndexPageState, List<KeywordState>> {
   @override
   get(IndexPageState state) {
     return state.tagList;
   }
 
   @override
-  void set(IndexPageState state, List<TagState> tagList);
+  void set(IndexPageState state, List<KeywordState> tagList);
 }
