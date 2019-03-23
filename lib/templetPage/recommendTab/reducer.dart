@@ -3,15 +3,21 @@ import 'package:fish_redux/fish_redux.dart';
 import 'action.dart';
 import 'state.dart';
 
-Reducer<TopBarState> buildReducer() {
-  return asReducer<TopBarState>(<Object, Reducer<TopBarState>>{
-     TopBarActionEnum.createAnimation: _createAnimation,
+Reducer<RecommendTabState> buildReducer() {
+  return asReducer<RecommendTabState>(<Object, Reducer<RecommendTabState>>{
+    RecommendTabActionEnum.updateTagList: _updateTagList,
+    RecommendTabActionEnum.updateRemKeywords: _updateRemKeywords,
   });
 }
 
-TopBarState _createAnimation(TopBarState state, Action action) {
+RecommendTabState _updateTagList(RecommendTabState state, Action action) {
   final newState = state.clone();
-  newState.controller = action.payload['controller'];
-  newState.animation = action.payload['animation'];
+  newState.tagList = action.payload;
+  return newState;
+}
+
+RecommendTabState _updateRemKeywords(RecommendTabState state, Action action) {
+  final newState = state.clone();
+  newState.remKeywords = action.payload;
   return newState;
 }
