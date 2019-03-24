@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart';
-import '../../template/state.dart';
+import '../../../components/template/state.dart';
 import 'state.dart';
 
 // 顶部条

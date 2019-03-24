@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import '../../template/state.dart';
+import '../../../components/template/state.dart';
 
 class TemplateListState implements Cloneable<TemplateListState> {
   final List<TemplateState> list;

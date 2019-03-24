@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import '../../template/component.dart';
+import '../../../components/template/component.dart';
 
 import 'state.dart';
 

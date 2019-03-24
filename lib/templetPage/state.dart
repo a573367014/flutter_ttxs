@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'topBar/state.dart';
-import 'recommendTab/tagList/state.dart';
 
 import 'recommendTab/state.dart';
 

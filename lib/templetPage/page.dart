@@ -4,6 +4,8 @@ import 'topBar/component.dart';
 import 'navBar/component.dart';
 import 'recommendTab/component.dart';
 
+import '../components/aside/component.dart';
+
 import 'effect.dart';
 import 'reducer.dart';
 import 'state.dart';
@@ -17,6 +19,7 @@ class IndexPage extends Page<IndexPageState, dynamic> {
             reducer: buildReducer(),
             view: buildView,
             dependencies: Dependencies(slots: {
+              'aside': Aside().asDependent(NavBarConnector()),
               'topBar': TopBar().asDependent(TopBarConnector()),
               'navBar': NavBar().asDependent(NavBarConnector()),
               'recommendTab': RecommendTab().asDependent(RecommendTabConnector()),

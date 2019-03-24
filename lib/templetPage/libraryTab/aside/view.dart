@@ -10,7 +10,7 @@ Widget buildNavBar(
       height: 60,
       padding: EdgeInsets.only(left: 4, right: 16),
       decoration: BoxDecoration(
-          color: Color(0xFFFAFAFA),
+          color: Colors.white,
           border: Border(bottom: BorderSide(color: borderColor))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
