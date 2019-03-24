@@ -17,7 +17,7 @@ void _init(Action action, Context<TopBarState> ctx) {
 
 
   final controller = AnimationController(
-      duration: const Duration(milliseconds: 200), vsync: tickerProvider);
+      duration: const Duration(milliseconds: 100), vsync: tickerProvider);
   final animation = Tween<double>(begin: 0, end: 55).animate(controller);
 
   ctx.dispatch(TopBarActionCreator.createAnimation(controller, animation));

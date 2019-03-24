@@ -5,7 +5,7 @@ Dio initDio() {
   final options = BaseOptions(
       baseUrl: 'https://www.rel.ttxsapp.com/api/miniprogram',
       connectTimeout: 5000,
-      receiveTimeout: 3000);
+      receiveTimeout: 20000);
 
   Dio dio = new Dio(options);
 

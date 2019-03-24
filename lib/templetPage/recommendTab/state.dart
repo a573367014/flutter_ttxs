@@ -1,10 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import '../tagList/state.dart';
+import 'tagList/state.dart';
+import 'templateList/state.dart';
 
 class RecommendTabState implements Cloneable<RecommendTabState> {
   List<KeywordState> tagList = [];
   List<KeywordState> remKeywords = [];
+  List<TemplateListState> templateLists = [];
   ScrollController sController;
 
   @override
@@ -12,7 +14,8 @@ class RecommendTabState implements Cloneable<RecommendTabState> {
     return RecommendTabState()
       ..tagList = tagList
       ..remKeywords = remKeywords
-      ..sController = sController;
+      ..sController = sController
+      ..templateLists = templateLists;
   }
 }
 

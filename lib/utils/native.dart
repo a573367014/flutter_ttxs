@@ -1,12 +1,6 @@
 import 'dart:math';
 
-void main() {
-  final List<int> a = [1,2,3,4, 5, 6, 7];
-  final b = chunk<int>(a, 2);
-  print(a);
-  print(b);
-}
-
+//  数组分块
 List<List<T>> chunk<T>(List<T> list, int size) {
   final List<List<T>> result = [];
   int begin = 0;
@@ -18,4 +12,3 @@ List<List<T>> chunk<T>(List<T> list, int size) {
   });
   return result;
 }
-

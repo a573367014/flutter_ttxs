@@ -3,7 +3,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'action.dart';
 import 'state.dart';
 
-import 'tagList/state.dart';
+import 'recommendTab/tagList/state.dart';
 
 import '../models/keywords.dart';
 

@@ -6,10 +6,12 @@ class OrmRequest{
   String _path;
   Dio _http = dio;
 
-  OrmRequest(restPath, {Map pathParams, Dio http}) {
-    final urlTokens = parse(restPath);
+  OrmRequest(String restPath, {Map<String, dynamic> pathParams, Dio http}) {
+    // final urlTokens = parse(restPath);
+    // this._path = tokensToFunction(urlTokens)(pathParams);
+    final toPath = pathToFunction(restPath);
 
-    this._path = tokensToFunction(urlTokens)(pathParams);
+    this._path = toPath(pathParams ?? {});
     this._http = _http ?? this._http;
   }
 
