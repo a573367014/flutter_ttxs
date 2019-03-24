@@ -1,61 +1,16 @@
-{ "page": 1,
-    "per_page": 3,
-    "total": 12,
-    "total_pages": 4,
-    "author":{
-      "first_name": "Ms R",
-      "last_name":"Reddy"
-    },
-    "data": [
-      {
-        "id": 1,
-        "first_name": "George",
-        "last_name": "Bluth",
-        "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg",
-        "images": [
-          {
-            "id" : 122,
-            "imageName": "377cjsahdh388.jpeg"
-          },
-          {
-            "id" : 152,
-            "imageName": "1743fsahdh388.jpeg"
-          }
-        ]
-  
-      },
-      {
-        "id": 2,
-        "first_name": "Janet",
-        "last_name": "Weaver",
-        "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg",
-        "images": [
-          {
-            "id" : 122,
-            "imageName": "377cjsahdh388.jpeg"
-          },
-          {
-            "id" : 152,
-            "imageName": "1743fsahdh388.jpeg"
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "first_name": "Emma",
-        "last_name": "Wong",
-        "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg",
-        "images": [
-          {
-            "id" : 122,
-            "imageName": "377cjsahdh388.jpeg"
-          },
-          {
-            "id" : 152,
-            "imageName": "1743fsahdh388.jpeg"
-          }
-        ]
-      }
-    ]
-  }
-  
+[
+    {
+        "material_id": 87671,
+        "poster_id": "0087671",
+        "template_type": 1,
+        "price": 0,
+        "pic_num_max": 0,
+        "preview_info": {
+            "width": 1242,
+            "height": 2208,
+            "url": "https://st0.dancf.com/www/templets/previews/20190322114038/0_5c945936d75bd.png"
+        },
+        "grade": 0,
+        "rules_count": 0
+    }
+]

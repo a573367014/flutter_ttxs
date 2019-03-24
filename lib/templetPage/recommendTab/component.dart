@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 
 import '../tagList/component.dart';
 import '../keywordTitle/component.dart';
+import '../keywordTitleAdapter/adapter.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -14,7 +15,7 @@ class RecommendTab extends Component<RecommendTabState> {
             effect: buildEffect(),
             reducer: buildReducer(),
             view: buildView,
-            dependencies: Dependencies(slots: {
+            dependencies: Dependencies(adapter: ToDoListAdapter(), slots: {
               'tagList': TagList().asDependent(TagListConnector()),
               'keywordTitle':
                   KeywordTitle().asDependent(KeywordTitleConnector()),

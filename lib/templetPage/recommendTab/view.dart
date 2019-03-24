@@ -62,7 +62,7 @@ Widget getTemplateList(double width, double height) {
 Widget getBottomLinkItem(int index, RecommendTabState state) {
   final arrowIcon = Icon(IconData(0xe601, fontFamily: 'iconfont'), size: 22);
   final transformArrowIcon = Transform.rotate(
-    // 旋转270度
+      // 旋转270度
       angle: pi * 1.5,
       child: arrowIcon);
   return GestureDetector(
@@ -96,44 +96,21 @@ Widget getBottomLinkList(RecommendTabState state) => Container(
             .toList()));
 
 // 顶部条
-Widget buildView(RecommendTabState state, Dispatch dispatch, ViewService service) {
+Widget buildView(
+    RecommendTabState state, Dispatch dispatch, ViewService viewService) {
+  final ListAdapter adapter = viewService.buildAdapter();
   return KeepAliveWrapper(
-      ListView(controller: state.sController, children: <Widget>[
-        service.buildComponent('tagList'),
-        service.buildComponent('keywordTitle'),
-        service.buildComponent('keywordTitle'),
-        service.buildComponent('keywordTitle'),
+      ListView.builder(
+        itemBuilder: adapter.itemBuilder,
+        itemCount: adapter.itemCount));
+      // ListView(controller: state.sController, children: <Widget>[
+      //   viewService.buildComponent('tagList'),
+      //   viewService.buildComponent('keywordTitle'),
+      //   viewService.buildComponent('keywordTitle'),
+      //   viewService.buildComponent('keywordTitle'),
 
-        getTitle('今日推荐'),
-        getTemplateList(116, 208),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getTitle('今日推荐'),
-        getTemplateList(200, 115),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getTitle('今日推荐'),
-        getTemplateList(116, 208),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getTitle('今日推荐'),
-        getTemplateList(200, 115),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getTitle('今日推荐'),
-        getTemplateList(116, 208),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getTitle('今日推荐'),
-        getTemplateList(200, 115),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getTitle('今日推荐'),
-        getTemplateList(200, 115),
-        getTitle('今日推荐'),
-        getTemplateList(116, 116),
-        getBottomLinkList(state)
-      ]));
+      //   getTitle('今日推荐'),
+      //   getTemplateList(116, 116),
+      //   getBottomLinkList(state)
+      // ]));
 }

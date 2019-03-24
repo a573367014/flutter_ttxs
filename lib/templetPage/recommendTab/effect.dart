@@ -28,7 +28,7 @@ void _dispose(Action action, Context<RecommendTabState> ctx) {
 void _loadData(Action action, Context<RecommendTabState> ctx) {
   Future.wait([
     keywordsModel().select({'type': 0, 'page_num': 1, 'page_size': 1000}),
-    keywordsModel().select({'type': 2, 'page_num': 1, 'page_size': 16}),
+    keywordsModel().select({'type': 2, 'page_num': 1, 'page_size': 100}),
     keywordsModel().select({'type': 4, 'page_num': 1, 'page_size': 1000})
   ]).then((resList) {
     final KeywordListState tagsModel =
