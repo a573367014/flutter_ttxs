@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'state.dart';
 
 Widget _getTagIcon({String text, Color color, List<Color> backgroundColors}) {
@@ -12,7 +13,8 @@ Widget _getTagIcon({String text, Color color, List<Color> backgroundColors}) {
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: backgroundColors),
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(8))),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(6), bottomRight: Radius.circular(6))),
     child: Text(text,
         style: TextStyle(
           color: color,
@@ -28,15 +30,17 @@ Widget buildView(
     decoration: BoxDecoration(
         color: Color(0xffeeeeee), borderRadius: BorderRadius.circular(6)),
     margin: EdgeInsets.symmetric(horizontal: 4),
-    child: Stack(children: <Widget>[
+    child: Stack(alignment: Alignment.center, children: <Widget>[
       ClipRRect(
           borderRadius: BorderRadius.circular(6),
           //Random().nextInt(1000).toString()
-          child: Image.network(
-              state.previewInfo.url +
-                  '?x-oss-process=image/resize,w_332/interlace,1',
+          child: CachedNetworkImage(
+              imageUrl: state.previewInfo.url +
+                  '?x-oss-process=image/resize,w_232/interlace,1',
               width: state.previewInfo.showWidth,
               height: state.previewInfo.showHeight,
+              fadeInDuration: Duration(milliseconds: 200),
+              alignment: Alignment.center,
               fit: BoxFit.cover)),
       // 多配图
       Positioned(

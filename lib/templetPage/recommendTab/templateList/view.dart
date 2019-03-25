@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart';
-import '../../../components/template/state.dart';
+import '../../../components/keepAliveWrapper.dart';
+import 'dart:math';
+
+import '../effect.dart';
 import 'state.dart';
 
 // 顶部条
@@ -10,16 +13,16 @@ Widget buildView(
 
   double height = 0;
 
-  if(state.list.length > 0) {
-    height = state.list[0].previewInfo.showHeight;
+  if (state.list.length > 0) {
+    height = min(state.list[0].previewInfo.showHeight, TEMPLATE_WIDTH * 16 / 9);
   }
 
-  return Container(
-    height: height,
-    child: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 12),
-        scrollDirection: Axis.horizontal,
-        itemBuilder: adapter.itemBuilder,
-        itemCount: adapter.itemCount
-  ));
+  return KeepAliveWrapper(Container(
+      height: height,
+      child: ListView.builder(
+          cacheExtent: 5.0,
+          padding: EdgeInsets.symmetric(horizontal: 12),
+          scrollDirection: Axis.horizontal,
+          itemBuilder: adapter.itemBuilder,
+          itemCount: adapter.itemCount)));
 }

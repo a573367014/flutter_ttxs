@@ -4,7 +4,7 @@ import 'tagList/state.dart';
 import 'templateList/state.dart';
 
 class RecommendTabState implements Cloneable<RecommendTabState> {
-  List<KeywordState> tagList = [];
+  List<KeywordState> tags = [];
   List<KeywordState> remKeywords = [];
   List<TemplateListState> templateLists = [];
   ScrollController sController;
@@ -12,7 +12,7 @@ class RecommendTabState implements Cloneable<RecommendTabState> {
   @override
   RecommendTabState clone() {
     return RecommendTabState()
-      ..tagList = tagList
+      ..tags = tags
       ..remKeywords = remKeywords
       ..sController = sController
       ..templateLists = templateLists;
@@ -23,7 +23,7 @@ class RecommendTabState implements Cloneable<RecommendTabState> {
 class TagListConnector extends ConnOp<RecommendTabState, List<KeywordState>> {
   @override
   get(RecommendTabState state) {
-    return state.tagList;
+    return state.tags;
   }
 
   @override

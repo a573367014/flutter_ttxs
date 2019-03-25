@@ -5,15 +5,15 @@ import 'state.dart';
 
 Reducer<RecommendTabState> buildReducer() {
   return asReducer<RecommendTabState>(<Object, Reducer<RecommendTabState>>{
-    RecommendTabActionEnum.updateTagList: _updateTagList,
+    RecommendTabActionEnum.updateTags: _updateTags,
     RecommendTabActionEnum.updateRemKeywords: _updateRemKeywords,
     RecommendTabActionEnum.updateTemplateLists: _updateTemplateLists
   });
 }
 
-RecommendTabState _updateTagList(RecommendTabState state, Action action) {
+RecommendTabState _updateTags(RecommendTabState state, Action action) {
   final newState = state.clone();
-  newState.tagList = action.payload;
+  newState.tags = action.payload;
   return newState;
 }
 

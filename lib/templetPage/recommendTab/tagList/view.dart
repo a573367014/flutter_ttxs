@@ -22,16 +22,16 @@ Widget getTagItem(KeywordState data) {
 
 // 顶部条
 Widget buildTagList(
-    List<KeywordState> tagList, Dispatch dispatch, ViewService viewService) {
+    List<KeywordState> tags, Dispatch dispatch, ViewService viewService) {
   return Container(
     height: 80,
     margin: EdgeInsets.only(top: 10),
     child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 12),
         scrollDirection: Axis.horizontal,
-        itemCount: tagList.length,
+        itemCount: tags.length,
         itemBuilder: (BuildContext context, int index) {
-          return getTagItem(tagList[index]);
+          return getTagItem(tags[index]);
         }),
   );
 }

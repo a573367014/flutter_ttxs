@@ -1,9 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
-import '../components/aside/component.dart';
 import '../components/keepAliveWrapper.dart';
-
 import 'state.dart';
 
 Widget buildView(IndexPageState state, Dispatch dispatch, ViewService service) {

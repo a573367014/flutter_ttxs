@@ -4,26 +4,31 @@ import 'templateList/state.dart';
 
 enum RecommendTabActionEnum {
   update,
-  updateTagList,
+  updateTags,
   updateRemKeywords,
   updateTemplateLists,
-  onLoadTemplate
+  onLoadTemplate,
+  onLoadData
 }
 
-class IndexPageActionCreator {
-  static Action updateTagList(List<KeywordState> list) {
-    return Action(RecommendTabActionEnum.updateTagList, payload: list);
+class RecommendTabActionCreator {
+  static Action updateTags(List<KeywordState> list) {
+    return Action(RecommendTabActionEnum.updateTags, payload: list);
   }
 
   static Action updateRemKeywords(List<KeywordState> list) {
     return Action(RecommendTabActionEnum.updateRemKeywords, payload: list);
   }
 
-  static Action onLoadTemplate(List<KeywordState> list) {
-    return Action(RecommendTabActionEnum.onLoadTemplate, payload: list);
-  }
-
   static Action updateTemplateLists(List<TemplateListState> list) {
     return Action(RecommendTabActionEnum.updateTemplateLists, payload: list);
+  }
+
+  static Action onLoadData() {
+    return Action(RecommendTabActionEnum.onLoadData);
+  }
+
+  static Action onLoadTemplate(List<KeywordState> list) {
+    return Action(RecommendTabActionEnum.onLoadTemplate, payload: list);
   }
 }

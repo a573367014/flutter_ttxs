@@ -21,7 +21,7 @@ class _ToDoListConnector
     implements Connector<RecommendTabState, List<ItemBean>> {
   @override
   List<ItemBean> get(RecommendTabState state) {
-    List<ItemBean> result = [ItemBean('recommendTab/tagList', state.tagList)];
+    List<ItemBean> result = [ItemBean('recommendTab/tagList', state.tags)];
 
     if (state.remKeywords?.isNotEmpty == true &&
         state.templateLists?.isNotEmpty == true &&
@@ -35,7 +35,7 @@ class _ToDoListConnector
     }
 
     result.add(ItemBean('bottomButtons', state.sController));
-    print(result.length);
+//    print(result.length);
     return result;
   }
 
