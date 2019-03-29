@@ -10,9 +10,11 @@ final List<Map<String, dynamic>> linkData = [
   {
     'title': '返回顶部',
     'callback': (ScrollController controller) {
-      controller.jumpTo(0);
-      // animateTo(0,
-         //  duration: Duration(milliseconds: 200), curve: Curves.easeIn);
+      // 0 会触发下拉
+      // https://github.com/flutter/flutter/issues/26833
+      // controller.jumpTo(0.1);
+      controller.animateTo(0,
+          duration: Duration(milliseconds: 200), curve: Curves.easeIn);
     }
   }
 ];

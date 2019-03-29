@@ -1,21 +1,13 @@
-import 'dart:math';
+import 'dart:async';
 
 void main() {
-  final List<int> a = [1,2,3,4, 5, 6, 7];
-  final b = chunk<int>(a, 2);
-  print(a);
-  print(b);
+  final a = {};
+  final b = null;
+  if(a.containsKey('b')) {
+  }
+  print(b ?? b['a']);
+
+//  Completer completer =  a['completer'];
+//  print(completer);
+//  print(completer?.future);
 }
-
-List<List<T>> chunk<T>(List<T> list, int size) {
-  final List<List<T>> result = [];
-  int begin = 0;
-
-  List((list.length / size).ceil()).forEach((i) {
-    final int end =begin + size;
-    result.add(list.sublist(begin, min(end, list.length)));
-    begin += size;
-  });
-  return result;
-}
-

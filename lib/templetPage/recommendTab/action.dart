@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'dart:async';
 import 'tagList/state.dart';
 import 'templateList/state.dart';
 
@@ -7,6 +8,7 @@ enum RecommendTabActionEnum {
   updateTags,
   updateRemKeywords,
   updateTemplateLists,
+  updateIsLoading,
   onLoadTemplate,
   onLoadData
 }
@@ -24,11 +26,30 @@ class RecommendTabActionCreator {
     return Action(RecommendTabActionEnum.updateTemplateLists, payload: list);
   }
 
-  static Action onLoadData() {
-    return Action(RecommendTabActionEnum.onLoadData);
+  static Action updateIsLoading(bool isLoading) {
+    return Action(RecommendTabActionEnum.updateIsLoading, payload: isLoading);
   }
 
-  static Action onLoadTemplate(List<KeywordState> list) {
-    return Action(RecommendTabActionEnum.onLoadTemplate, payload: list);
+  static Action onLoadData({
+    Completer completer
+  }) {
+    return Action(RecommendTabActionEnum.onLoadData,
+        payload:ActionPayload(completer: completer));
   }
+
+  static Action onLoadTemplate(List<KeywordState> list, {
+    Completer completer
+  }) {
+    return Action(RecommendTabActionEnum.onLoadTemplate,
+        payload: ActionPayload(data: list, completer: completer));
+  }
+}
+
+class ActionPayload {
+  final data;
+  final Completer completer;
+
+  ActionPayload({
+    this.data, this.completer
+  });
 }

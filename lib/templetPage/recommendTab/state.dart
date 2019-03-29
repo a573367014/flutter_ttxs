@@ -8,10 +8,12 @@ class RecommendTabState implements Cloneable<RecommendTabState> {
   List<KeywordState> remKeywords = [];
   List<TemplateListState> templateLists = [];
   ScrollController sController;
+  bool isLoading = false;
 
   @override
   RecommendTabState clone() {
     return RecommendTabState()
+      ..isLoading = isLoading
       ..tags = tags
       ..remKeywords = remKeywords
       ..sController = sController

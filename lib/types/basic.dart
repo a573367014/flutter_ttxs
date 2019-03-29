@@ -1,5 +1,7 @@
-// typedef FromJson<T> = T Function();
+import 'dart:async';
+export 'dart:async';
 
-abstract class JsonModel<R> {
-    R toJson();
+abstract class CompleterCreator {
+    Completer completer;
+    CompleterCreator({this.completer});
 }
