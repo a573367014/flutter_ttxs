@@ -8,7 +8,7 @@ Reducer<RecommendTabState> buildReducer() {
     RecommendTabActionEnum.updateTags: _updateTags,
     RecommendTabActionEnum.updateRemKeywords: _updateRemKeywords,
     RecommendTabActionEnum.updateTemplateLists: _updateTemplateLists,
-    RecommendTabActionEnum.updateIsLoading: _updateIsLoading
+    RecommendTabActionEnum.updatePageState: _updatePageState
   });
 }
 
@@ -30,8 +30,8 @@ RecommendTabState _updateTemplateLists(RecommendTabState state, Action action) {
   return newState;
 }
 
-RecommendTabState _updateIsLoading(RecommendTabState state, Action action) {
+RecommendTabState _updatePageState(RecommendTabState state, Action action) {
   final newState = state.clone();
-  newState.isLoading = action.payload;
+  newState.pageState = action.payload?.clone();
   return newState;
 }

@@ -10,7 +10,7 @@ import 'state.dart';
 class RecommendTabAdapter extends DynamicFlowAdapter<RecommendTabState> {
   RecommendTabAdapter()
       : super(pool: <String, Component<Object>>{
-          'recommendTab/tagList': TagList(),
+          'tagList': TagList(),
           'title': KeywordTitle(),
           'templateList': TemplateList(),
           'bottomButtons': BottomButtons()
@@ -21,7 +21,7 @@ class _ToDoListConnector
     implements Connector<RecommendTabState, List<ItemBean>> {
   @override
   List<ItemBean> get(RecommendTabState state) {
-    List<ItemBean> result = [ItemBean('recommendTab/tagList', state.tags)];
+    List<ItemBean> result = [ItemBean('tagList', state.tags)];
 
     if (state.remKeywords?.isNotEmpty == true &&
         state.templateLists?.isNotEmpty == true &&
@@ -35,7 +35,7 @@ class _ToDoListConnector
     }
 
     result.add(ItemBean('bottomButtons', state.sController));
-//    print(result.length);
+    // print(result.length);
     return result;
   }
 

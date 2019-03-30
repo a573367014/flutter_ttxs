@@ -14,7 +14,7 @@ final List<Map<String, dynamic>> linkData = [
       // https://github.com/flutter/flutter/issues/26833
       // controller.jumpTo(0.1);
       controller.animateTo(0,
-          duration: Duration(milliseconds: 200), curve: Curves.easeIn);
+          duration: Duration(milliseconds: 300), curve: Curves.easeIn);
     }
   }
 ];

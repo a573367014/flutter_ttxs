@@ -20,7 +20,6 @@ Widget buildView(
   return KeepAliveWrapper(Container(
       height: height,
       child: ListView.builder(
-          cacheExtent: 5.0,
           padding: EdgeInsets.symmetric(horizontal: 12),
           scrollDirection: Axis.horizontal,
           itemBuilder: adapter.itemBuilder,
