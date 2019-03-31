@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart';
-import '../../../components/keepAliveWrapper.dart';
 import 'dart:math';
 
 import '../effect.dart';
@@ -17,11 +16,20 @@ Widget buildView(
     height = min(state.list[0].previewInfo.showHeight, TEMPLATE_WIDTH * 16 / 9);
   }
 
-  return KeepAliveWrapper(Container(
+  return Container(
       height: height,
-      child: ListView.builder(
-          padding: EdgeInsets.symmetric(horizontal: 12),
-          scrollDirection: Axis.horizontal,
-          itemBuilder: adapter.itemBuilder,
-          itemCount: adapter.itemCount)));
+      child: NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification ntf) {
+            // 干扰到垂直滚动条、所以取消冒泡
+            return true;
+          },
+          child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 4),
+                    child: adapter.itemBuilder(context, index));
+              },
+              itemCount: adapter.itemCount)));
 }

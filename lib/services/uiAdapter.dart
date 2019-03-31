@@ -1,12 +1,17 @@
+/*
+ * Created by 李卓原 on 2018/9/29.
+ * email: zhuoyuan93@gmail.com
+ */
+
 import 'package:flutter/material.dart';
 
-// https://github.com/OpenFlutter/flutter_screenutil
-class ScreenUtil {
-  static ScreenUtil instance = new ScreenUtil();
+class Ui {
+  static Ui instance = new Ui();
 
   //设计稿的设备尺寸修改
-  int _designWidth;
-  int _designHeight;
+  int width;
+  int height;
+  bool allowFontScaling;
 
   static MediaQueryData _mediaQueryData;
   static double _screenWidth;
@@ -18,12 +23,14 @@ class ScreenUtil {
 
   static double _textScaleFactor;
 
-  ScreenUtil({int width, int height}) {
-    _designWidth = width;
-    _designHeight = height;
-  }
+  Ui({
+    this.width = 750,
+    this.height = 1334,
+    this.allowFontScaling = false,
+  });
 
-  static ScreenUtil getInstance() {
+  ///getInstance
+  static Ui get() {
     return instance;
   }
 
@@ -65,25 +72,27 @@ class ScreenUtil {
   static double get bottomBarHeight => _bottomBarHeight * _pixelRatio;
 
   ///实际的dp与设计稿px的比例
-  get scaleWidth => _screenWidth / instance._designWidth;
+  get scaleWidth => _screenWidth / instance.width;
 
-  get scaleHeight => _screenHeight / instance._designHeight;
+  get scaleHeight => _screenHeight / instance.height;
 
   ///根据设计稿的设备宽度适配
   ///高度也根据这个来做适配可以保证不变形
-  setWidth(int width) => width * scaleWidth;
+  ///原名setWidth
+  sw(double width) => width * scaleWidth;
 
   /// 根据设计稿的设备高度适配
   /// 当发现设计稿中的一屏显示的与当前样式效果不符合时,
   /// 或者形状有差异时,高度适配建议使用此方法
   /// 高度适配主要针对想根据设计稿的一屏展示一样的效果
-  setHeight(int height) => height * scaleHeight;
+  /// 原名setHeight
+  sh(double height) => height * scaleHeight;
 
   ///字体大小适配方法
   ///@param fontSize 传入设计稿上字体的px ,
-  ///@param allowFontScaling 控制字体是否要根据系统的“字体大小”辅助选项来进行缩放。默认值为true。
-  ///@param allowFontScaling Specifies whether fonts should scale to respect Text Size accessibility settings. The default is true.
-  setSp(int fontSize, [allowFontScaling = true]) => allowFontScaling
-      ? setWidth(fontSize) * _textScaleFactor
-      : setWidth(fontSize);
+  ///@param allowFontScaling 控制字体是否要根据系统的“字体大小”辅助选项来进行缩放。默认值为false。
+  ///@param allowFontScaling Specifies whether fonts should scale to respect Text Size accessibility settings. The default is false.
+  ///原名setSp
+  sf(double fontSize) =>
+      allowFontScaling ? sw(fontSize) : sw(fontSize) / _textScaleFactor;
 }

@@ -16,8 +16,9 @@ Widget buildView(IndexPageState state, Dispatch dispatch, ViewService service) {
             service.buildComponent('navBar'),
             Expanded(
               child: TabBarView(children: <Widget>[
+                KeepAliveWrapper(service.buildComponent('libraryTab')),
+
                 KeepAliveWrapper(service.buildComponent('recommendTab')),
-                KeepAliveWrapper(service.buildComponent('aside')),
                 KeepAliveWrapper(service.buildComponent('recommendTab')),
               ]),
             )

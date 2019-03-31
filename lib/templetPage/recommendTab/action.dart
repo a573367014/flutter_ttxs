@@ -46,12 +46,3 @@ class RecommendTabActionCreator {
         payload: ActionPayload(data: replace, completer: completer));
   }
 }
-
-class ActionPayload {
-  final data;
-  final Completer completer;
-
-  ActionPayload({
-    this.data, this.completer
-  });
-}

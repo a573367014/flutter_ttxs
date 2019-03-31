@@ -29,7 +29,6 @@ Widget buildView(
   return Container(
     decoration: BoxDecoration(
         color: Color(0xffeeeeee), borderRadius: BorderRadius.circular(6)),
-    margin: EdgeInsets.symmetric(horizontal: 4),
     child: Stack(alignment: Alignment.center, children: <Widget>[
       ClipRRect(
           borderRadius: BorderRadius.circular(6),

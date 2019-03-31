@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:async';
 import 'package:dio/dio.dart';
 
 class PageState {
@@ -36,4 +37,13 @@ class PageState {
 
     return newState;
   }
+}
+
+class ActionPayload {
+  final data;
+  final Completer completer;
+
+  ActionPayload({
+    this.data, this.completer
+  });
 }

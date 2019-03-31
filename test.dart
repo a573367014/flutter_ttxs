@@ -1,13 +1,6 @@
-import 'dart:async';
+import 'dart:math';
 
 void main() {
-  final a = {};
-  final b = null;
-  if(a.containsKey('b')) {
-  }
-  print(b ?? b['a']);
-
-//  Completer completer =  a['completer'];
-//  print(completer);
-//  print(completer?.future);
+  final int a = Random().nextInt(300);
+  print(a);
 }

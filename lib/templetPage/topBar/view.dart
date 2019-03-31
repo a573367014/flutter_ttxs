@@ -18,7 +18,7 @@ class _TopBar extends AnimatedWidget {
             child: Container(
                 height: 55,
                 decoration: BoxDecoration(
-                    color: Color(0xFFFAFAFA),
+                    color: Colors.white,
                     border:
                         Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))),
                 child: Container(

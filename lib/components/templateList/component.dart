@@ -8,9 +8,9 @@ import 'effect.dart';
 class TemplateList extends Component<TemplateListState> {
   TemplateList()
       : super(
-            effect: buildEffect(),
-            view: buildView,
-            dependencies: Dependencies(
-                adapter: TemplateListAdapter()
-            ));
+      effect: buildEffect(),
+      view: buildView,
+      dependencies: Dependencies(
+          adapter: TemplateListAdapter()
+      ));
 }

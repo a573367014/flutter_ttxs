@@ -1,12 +1,13 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'topBar/state.dart';
-
+import 'libraryTab/state.dart';
 import 'recommendTab/state.dart';
 
 class IndexPageState implements Cloneable<IndexPageState> {
   bool topBarVisible;
   RecommendTabState recommendTab;
+  LibraryTabState libraryTabState;
   TopBarState topBarState;
 
   @override
@@ -14,6 +15,7 @@ class IndexPageState implements Cloneable<IndexPageState> {
     return IndexPageState()
       ..topBarVisible = topBarVisible
       ..topBarState = topBarState
+      ..libraryTabState = libraryTabState
       ..recommendTab = recommendTab;
   }
 }
@@ -25,6 +27,9 @@ IndexPageState initState(dynamic params) {
   state.topBarState = TopBarState();
   state.recommendTab = RecommendTabState();
   state.recommendTab.sController = ScrollController();
+
+  state.libraryTabState = LibraryTabState();
+  state.libraryTabState.sController = ScrollController();
 
   return state;
 }
@@ -60,5 +65,17 @@ class RecommendTabConnector extends ConnOp<IndexPageState, RecommendTabState> {
   @override
   void set(IndexPageState state, RecommendTabState subState) {
     state.recommendTab = subState.clone();
+  }
+}
+
+class LibraryTabStateConnector extends ConnOp<IndexPageState, LibraryTabState> {
+  @override
+  get(IndexPageState state) {
+    return state.libraryTabState;
+  }
+
+  @override
+  void set(IndexPageState state, LibraryTabState subState) {
+    state.libraryTabState = subState.clone();
   }
 }
