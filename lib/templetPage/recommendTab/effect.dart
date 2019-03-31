@@ -81,21 +81,20 @@ Future _loadTemplate(Action action, Context<RecommendTabState> ctx) {
   final bool isReplace = payload.data;
 
   final Completer completer = payload?.completer;
-  final PageState pageState = ctx.state.pageState;
   PageState newPageState;
 
   ctx.dispatch(RecommendTabActionCreator.updatePageState(
-      pageState.clone()..isLoading = true
+      ctx.state.pageState.clone()..isLoading = true
   ));
 
   // 分页加载关键词
   return keywordsModel().select({
     'type': 2,
-    'page_num': isReplace ? 1 : pageState.num + 1,
-    'page_size': pageState.size
+    'page_num': isReplace ? 1 : ctx.state.pageState.num + 1,
+    'page_size': ctx.state.pageState.size
   }).then((res) {
     // 更新分页信息
-    newPageState = pageState.update(res.headers);
+    newPageState = ctx.state.pageState.clone()..update(res);
 
     // 发送 reducer 赋值请求
     final KeywordListState remKeywordsModel = KeywordListState.fromJson(res.data);

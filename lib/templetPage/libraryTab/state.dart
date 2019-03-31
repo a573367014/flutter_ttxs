@@ -4,8 +4,8 @@ import '../../components/templateList/state.dart';
 import '../../types/basic.dart';
 
 class LibraryTabState implements Cloneable<LibraryTabState> {
-  TemplateListState templateList = TemplateListState([]);
-  ScrollController sController;
+  TemplateListState templateList = TemplateListState(list: []);
+  ScrollController sController = ScrollController();
   PageState pageState = PageState(size: 20);
 
   @override
@@ -21,7 +21,7 @@ class TemplateListConnector
     implements Connector<LibraryTabState, TemplateListState> {
   @override
   TemplateListState get(LibraryTabState state) {
-    return state.templateList;
+    return state.templateList..sController = state.sController;
   }
 
   @override

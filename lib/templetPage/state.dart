@@ -7,15 +7,17 @@ import 'recommendTab/state.dart';
 class IndexPageState implements Cloneable<IndexPageState> {
   bool topBarVisible;
   RecommendTabState recommendTab;
-  LibraryTabState libraryTabState;
+  LibraryTabState libraryTab;
   TopBarState topBarState;
+  TabController tController;
 
   @override
   IndexPageState clone() {
     return IndexPageState()
+      ..tController = tController
       ..topBarVisible = topBarVisible
       ..topBarState = topBarState
-      ..libraryTabState = libraryTabState
+      ..libraryTab = libraryTab
       ..recommendTab = recommendTab;
   }
 }
@@ -28,20 +30,23 @@ IndexPageState initState(dynamic params) {
   state.recommendTab = RecommendTabState();
   state.recommendTab.sController = ScrollController();
 
-  state.libraryTabState = LibraryTabState();
-  state.libraryTabState.sController = ScrollController();
+  state.libraryTab = LibraryTabState();
+  state.libraryTab.sController = ScrollController();
 
   return state;
 }
 
 // connector
-class NavBarConnector extends ConnOp<IndexPageState, bool> {
+class NavBarConnector extends ConnOp<IndexPageState, Map<String, dynamic>> {
   @override
   get(IndexPageState state) {
-    return state.topBarVisible;
+    return <String, dynamic>{
+      'tController': state.tController,
+      'topBarVisible': state.topBarVisible
+    };
   }
 
-  void set(IndexPageState state, bool topBarVisible);
+  void set(IndexPageState state, Map<String, dynamic> subState);
 }
 
 class TopBarConnector extends ConnOp<IndexPageState, TopBarState> {
@@ -71,11 +76,11 @@ class RecommendTabConnector extends ConnOp<IndexPageState, RecommendTabState> {
 class LibraryTabStateConnector extends ConnOp<IndexPageState, LibraryTabState> {
   @override
   get(IndexPageState state) {
-    return state.libraryTabState;
+    return state.libraryTab;
   }
 
   @override
   void set(IndexPageState state, LibraryTabState subState) {
-    state.libraryTabState = subState.clone();
+    state.libraryTab = subState.clone();
   }
 }

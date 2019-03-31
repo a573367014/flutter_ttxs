@@ -18,18 +18,13 @@ Widget buildView(
 
   return Container(
       height: height,
-      child: NotificationListener<ScrollNotification>(
-          onNotification: (ScrollNotification ntf) {
-            // 干扰到垂直滚动条、所以取消冒泡
-            return true;
+      child: ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 12),
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+                margin: EdgeInsets.symmetric(horizontal: 4),
+                child: adapter.itemBuilder(context, index));
           },
-          child: ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 4),
-                    child: adapter.itemBuilder(context, index));
-              },
-              itemCount: adapter.itemCount)));
+          itemCount: adapter.itemCount));
 }

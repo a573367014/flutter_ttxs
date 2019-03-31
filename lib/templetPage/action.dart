@@ -1,16 +1,18 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart';
+
 import 'recommendTab/tagList/state.dart';
 
 enum IndexPageActionEnum {
-  update,
   updateTopBarVisible,
   updateTagList,
-  updateRemKeywords
+  updateRemKeywords,
+  updateTController
 }
 
 class IndexPageActionCreator {
-  static Action update(dynamic message) {
-    return Action(IndexPageActionEnum.update, payload: message);
+  static Action updateTController(TabController tController) {
+    return Action(IndexPageActionEnum.updateTController, payload: tController);
   }
 
   static Action updateTopBarVisible(bool topBarVisible) {

@@ -15,7 +15,6 @@ void _init(Action action, Context<TopBarState> ctx) {
   // stfState = this
   final TickerProvider tickerProvider = ctx.stfState as TopBarStateStf;
 
-
   final controller = AnimationController(
       duration: const Duration(milliseconds: 100), vsync: tickerProvider);
   final animation = Tween<double>(begin: 0, end: 55).animate(controller);

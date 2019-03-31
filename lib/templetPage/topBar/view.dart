@@ -65,6 +65,5 @@ class _TopBar extends AnimatedWidget {
 // 顶部条
 Widget buildTopBar(
     TopBarState state, Dispatch dispatch, ViewService viewService) {
-  final diffHeight = state?.animation?.value ?? 0;
   return _TopBar(state.animation);
 }

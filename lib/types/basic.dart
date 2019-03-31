@@ -25,17 +25,19 @@ class PageState {
       ..isLoading = isLoading;
   }
 
-  PageState update(DioHttpHeaders headers) {
-    final PageState newState = clone();
-    final Map<String, dynamic> pagination =
-        jsonDecode(headers['x-pagination'][0]);
+  void update(Response res) {
+    final DioHttpHeaders headers = res.headers;
+    final Map<String, dynamic> pagination = jsonDecode(headers['x-pagination'][0]);
+    bool _isOver = false;
 
-    newState
+    if (res.data.length < size) {
+      _isOver = res.data.length < size;
+    }
+
+    this
       ..num = pagination['num']
-      ..total = pagination['total'] == 0 ? total :  pagination['total']
-      ..isOver = pagination['num'] == pagination['total'] || pagination['total'] == 0;
-
-    return newState;
+      ..total = pagination['total']
+      ..isOver = _isOver;
   }
 }
 

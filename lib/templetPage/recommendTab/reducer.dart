@@ -32,6 +32,6 @@ RecommendTabState _updateTemplateLists(RecommendTabState state, Action action) {
 
 RecommendTabState _updatePageState(RecommendTabState state, Action action) {
   final newState = state.clone();
-  newState.pageState = action.payload?.clone();
+  newState.pageState = action.payload;
   return newState;
 }
