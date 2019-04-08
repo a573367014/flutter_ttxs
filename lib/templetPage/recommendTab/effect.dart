@@ -90,7 +90,7 @@ Future _loadTemplate(Action action, Context<RecommendTabState> ctx) {
   // 分页加载关键词
   return keywordsModel().select({
     'type': 2,
-    'page_num': isReplace ? 1 : ctx.state.pageState.num + 1,
+    'page_num': isReplace ? 1 : ctx.state.pageState.num,
     'page_size': ctx.state.pageState.size
   }).then((res) {
     // 更新分页信息

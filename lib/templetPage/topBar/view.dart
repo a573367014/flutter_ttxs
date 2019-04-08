@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fish_redux/fish_redux.dart';
+
+import 'action.dart';
 import 'state.dart';
 
 class _TopBar extends AnimatedWidget {
-  _TopBar(Animation<double> animation) : super(listenable: animation);
+  Dispatch dispatch;
+  _TopBar(Animation<double> animation, this.dispatch) : super(listenable: animation);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,13 @@ class _TopBar extends AnimatedWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(17),
                             border: Border.all(color: Color(0xffdddddd))),
-                        child: Row(
+                        child: GestureDetector(
+                          onTap: () {
+                            dispatch(TopBarActionCreator.onClickButton());
+                          },
+                          child:
+
+                        Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Icon(IconData(0xe60d, fontFamily: 'iconfont'),
@@ -52,7 +61,7 @@ class _TopBar extends AnimatedWidget {
                                   color: Color(0xffdddddd)),
                               Icon(IconData(0xe600, fontFamily: 'iconfont'),
                                   size: 20),
-                            ]),
+                            ]),),
                       )
                     ],
                   ),
@@ -65,5 +74,5 @@ class _TopBar extends AnimatedWidget {
 // 顶部条
 Widget buildTopBar(
     TopBarState state, Dispatch dispatch, ViewService viewService) {
-  return _TopBar(state.animation);
+  return _TopBar(state.animation, dispatch);
 }

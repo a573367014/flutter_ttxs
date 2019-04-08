@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'dart:async';
+import '../../models/attributes.json.dart';
 import '../../components/templateList/state.dart';
 import '../../types/basic.dart';
 
@@ -7,7 +8,9 @@ enum LibraryTabActionEnum {
   updateTemplateList,
   updatePageState,
   onLoadTemplate,
-  onLoadData
+  onLoadData,
+  updateFuncList,
+  updateAsideIndex
 }
 
 class LibraryTabActionCreator {
@@ -27,10 +30,20 @@ class LibraryTabActionCreator {
   }
 
   static Action onLoadTemplate({
-    bool replace = false,
+    Map<String, dynamic> params,
     Completer completer
   }) {
     return Action(LibraryTabActionEnum.onLoadTemplate,
-        payload: ActionPayload(data: replace, completer: completer));
+        payload: ActionPayload(data: params, completer: completer));
+  }
+
+  static Action updateFuncList(FuncListState funcList) {
+    return Action(LibraryTabActionEnum.updateFuncList,
+        payload: funcList);
+  }
+
+  static Action updateAsideIndex(int index) {
+    return Action(LibraryTabActionEnum.updateAsideIndex,
+        payload: index);
   }
 }

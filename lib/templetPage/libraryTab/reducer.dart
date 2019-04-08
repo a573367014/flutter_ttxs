@@ -6,7 +6,8 @@ import 'state.dart';
 Reducer<LibraryTabState> buildReducer() {
   return asReducer<LibraryTabState>(<Object, Reducer<LibraryTabState>>{
     LibraryTabActionEnum.updateTemplateList: _updateTemplateList,
-    LibraryTabActionEnum.updatePageState: _updatePageState
+    LibraryTabActionEnum.updateFuncList: _updateFuncList,
+    LibraryTabActionEnum.updateAsideIndex: _updateAsideIndex,
   });
 }
 
@@ -16,8 +17,15 @@ LibraryTabState _updateTemplateList(LibraryTabState state, Action action) {
   return newState;
 }
 
-LibraryTabState _updatePageState(LibraryTabState state, Action action) {
+LibraryTabState _updateFuncList(LibraryTabState state, Action action) {
   final newState = state.clone();
-  newState.pageState = action.payload?.clone();
+  newState.funcList = action.payload?.clone();
   return newState;
 }
+
+LibraryTabState _updateAsideIndex(LibraryTabState state, Action action) {
+  final newState = state.clone();
+  newState.currentIndex = action.payload;
+  return newState;
+}
+

@@ -35,7 +35,7 @@ class PageState {
     }
 
     this
-      ..num = pagination['num']
+      ..num = pagination['num'] + 1
       ..total = pagination['total']
       ..isOver = _isOver;
   }

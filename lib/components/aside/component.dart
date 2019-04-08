@@ -1,7 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'view.dart';
-class Aside extends Component<dynamic> {
+import 'state.dart';
+import 'effect.dart';
+
+class Aside extends Component<AsideState> {
   Aside() : super(
-      view: buildView
+      effect: buildEffect(),
+      view: buildView,
   );
 }

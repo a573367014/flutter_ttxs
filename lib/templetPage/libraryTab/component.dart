@@ -15,6 +15,6 @@ class LibraryTag extends Component<LibraryTabState> {
       dependencies: Dependencies(
           slots: {
             'templateList': TemplateList().asDependent(TemplateListConnector()),
-            'aside': Aside().asDependent(TemplateListConnector())
+            'aside': Aside().asDependent(AsideConnector())
           }));
 }

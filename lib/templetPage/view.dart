@@ -34,8 +34,8 @@ Widget buildView(IndexPageState state, Dispatch dispatch, ViewService service) {
                 child: TabBarView(
                   controller: state.tController,
                   children: <Widget>[
-                    KeepAliveWrapper(service.buildComponent('libraryTab')),
                     KeepAliveWrapper(service.buildComponent('recommendTab')),
+                    KeepAliveWrapper(service.buildComponent('libraryTab')),
                     Text('test')
                   ],
                 ),
