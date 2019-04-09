@@ -5,6 +5,7 @@ import '../../components/templateList/state.dart';
 import '../../types/basic.dart';
 
 enum LibraryTabActionEnum {
+  init,
   updateTemplateList,
   updatePageState,
   onLoadTemplate,
@@ -14,6 +15,10 @@ enum LibraryTabActionEnum {
 }
 
 class LibraryTabActionCreator {
+  static Action init() {
+    return Action(LibraryTabActionEnum.init);
+  }
+
   static Action updateTemplateList(TemplateListState listState) {
     return Action(LibraryTabActionEnum.updateTemplateList, payload: listState);
   }

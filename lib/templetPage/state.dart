@@ -25,13 +25,9 @@ class IndexPageState implements Cloneable<IndexPageState> {
 IndexPageState initState(dynamic params) {
   final IndexPageState state = IndexPageState();
   state.topBarVisible = true;
-
   state.topBarState = TopBarState();
   state.recommendTab = RecommendTabState();
-  state.recommendTab.sController = ScrollController();
-
   state.libraryTab = LibraryTabState();
-  state.libraryTab.sController = ScrollController();
 
   return state;
 }

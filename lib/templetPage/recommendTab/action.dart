@@ -5,6 +5,7 @@ import 'templateList/state.dart';
 import '../../types/basic.dart';
 
 enum RecommendTabActionEnum {
+  init,
   update,
   updateTags,
   updateRemKeywords,
@@ -15,6 +16,10 @@ enum RecommendTabActionEnum {
 }
 
 class RecommendTabActionCreator {
+  static Action init() {
+    return Action(RecommendTabActionEnum.init);
+  }
+
   static Action updateTags(List<KeywordState> list) {
     return Action(RecommendTabActionEnum.updateTags, payload: list);
   }

@@ -24,6 +24,7 @@ Effect<RecommendTabState> buildEffect() {
 
 void _init(Action action, Context<RecommendTabState> ctx) {
   print('recommendTab effect init');
+  ctx.dispatch(RecommendTabActionCreator.init());
 
   final Completer completer = Completer();
 

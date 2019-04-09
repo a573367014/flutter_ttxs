@@ -25,6 +25,8 @@ Effect<LibraryTabState> buildEffect() {
 
 bool _init(Action action, Context<LibraryTabState> ctx) {
   print('recommendTab effect init');
+  ctx.dispatch(LibraryTabActionCreator.init());
+
   attributesModel().select({}).then((res) {
     List<dynamic> func = res.data['func'];
     func.insertAll(0, [

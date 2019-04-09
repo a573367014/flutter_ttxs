@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -8,8 +9,15 @@ Reducer<RecommendTabState> buildReducer() {
     RecommendTabActionEnum.updateTags: _updateTags,
     RecommendTabActionEnum.updateRemKeywords: _updateRemKeywords,
     RecommendTabActionEnum.updateTemplateLists: _updateTemplateLists,
-    RecommendTabActionEnum.updatePageState: _updatePageState
+    RecommendTabActionEnum.updatePageState: _updatePageState,
+    RecommendTabActionEnum.init: _init,
   });
+}
+
+RecommendTabState _init(RecommendTabState state, Action action) {
+  final newState = state.clone();
+  newState.sController = ScrollController();
+  return newState;
 }
 
 RecommendTabState _updateTags(RecommendTabState state, Action action) {
