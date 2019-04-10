@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class TopBarState implements Cloneable<TopBarState> {
   AnimationController controller;
   Animation animation;
+  Function buttonCallback;
 
   TopBarState({
     this.controller,

@@ -12,7 +12,7 @@ Effect<IndexPageState> buildEffect() {
   return combineEffects(<Object, Effect<IndexPageState>>{
     Lifecycle.initState: _init,
     Lifecycle.dispose: _dispose,
-    TopBarActionEnum.onClickButton: _pushSearch
+    TopBarActionEnum.onPushSearch: _pushSearch
   });
 }
 

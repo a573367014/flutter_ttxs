@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 enum TopBarActionEnum {
   createAnimation,
-  onClickButton
+  onPushSearch
 }
 
 class TopBarActionCreator {
@@ -14,7 +14,7 @@ class TopBarActionCreator {
     });
   }
 
-  static Action onClickButton() {
-    return Action(TopBarActionEnum.onClickButton);
+  static Action onPushSearch() {
+    return Action(TopBarActionEnum.onPushSearch);
   }
 }

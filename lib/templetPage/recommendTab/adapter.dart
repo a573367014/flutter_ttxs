@@ -18,7 +18,7 @@ class RecommendTabAdapter extends DynamicFlowAdapter<RecommendTabState> {
 }
 
 class _ToDoListConnector
-    implements Connector<RecommendTabState, List<ItemBean>> {
+    extends ConnOp<RecommendTabState, List<ItemBean>> {
   @override
   List<ItemBean> get(RecommendTabState state) {
     List<ItemBean> result = [ItemBean('tagList', state.tags)];

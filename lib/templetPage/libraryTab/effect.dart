@@ -44,7 +44,7 @@ bool _init(Action action, Context<LibraryTabState> ctx) {
     ctx.dispatch(LibraryTabActionCreator.updateFuncList(attrState.func));
   }).then((data) {
     ctx.dispatch(LibraryTabActionCreator.onLoadTemplate(params: {
-      'page_size': ctx.state.templateList.pageState.size,
+      'page_size': ctx.state.templateList.pageState.size + 2000,
       'page_num': 1,
     }));
   });

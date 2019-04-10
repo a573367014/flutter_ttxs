@@ -6,7 +6,8 @@ import 'state.dart';
 
 class _TopBar extends AnimatedWidget {
   Dispatch dispatch;
-  _TopBar(Animation<double> animation, this.dispatch) : super(listenable: animation);
+  _TopBar(Animation<double> animation, this.dispatch)
+      : super(listenable: animation);
 
   @override
   Widget build(BuildContext context) {
@@ -43,25 +44,24 @@ class _TopBar extends AnimatedWidget {
                             border: Border.all(color: Color(0xffdddddd))),
                         child: GestureDetector(
                           onTap: () {
-                            dispatch(TopBarActionCreator.onClickButton());
+                            dispatch(TopBarActionCreator.onPushSearch());
                           },
-                          child:
-
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Icon(IconData(0xe60d, fontFamily: 'iconfont'),
-                                  size: 18),
-                              Text('搜索',
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.black)),
-                              Container(
-                                  width: 1,
-                                  height: 14,
-                                  color: Color(0xffdddddd)),
-                              Icon(IconData(0xe600, fontFamily: 'iconfont'),
-                                  size: 20),
-                            ]),),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Icon(IconData(0xe60d, fontFamily: 'iconfont'),
+                                    size: 18),
+                                Text('搜索',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.black)),
+                                Container(
+                                    width: 1,
+                                    height: 14,
+                                    color: Color(0xffdddddd)),
+                                Icon(IconData(0xe600, fontFamily: 'iconfont'),
+                                    size: 20),
+                              ]),
+                        ),
                       )
                     ],
                   ),

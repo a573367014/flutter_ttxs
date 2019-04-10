@@ -1,5 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+
+import 'topBar/action.dart';
 import 'topBar/state.dart';
 import 'libraryTab/state.dart';
 import 'recommendTab/state.dart';
@@ -38,7 +40,8 @@ class NavBarConnector extends ConnOp<IndexPageState, Map<String, dynamic>> {
   get(IndexPageState state) {
     return <String, dynamic>{
       'tController': state.tController,
-      'topBarVisible': state.topBarVisible
+      'topBarVisible': state.topBarVisible,
+      'actionCreator': TopBarActionCreator.onPushSearch
     };
   }
 

@@ -27,7 +27,7 @@ class LibraryTabState implements Cloneable<LibraryTabState> {
 }
 
 class TemplateListConnector
-    implements Connector<LibraryTabState, TemplateListState> {
+    extends ConnOp<LibraryTabState, TemplateListState> {
   @override
   TemplateListState get(LibraryTabState state) {
     return state.templateList..sController = state.sController;
@@ -38,7 +38,7 @@ class TemplateListConnector
 }
 
 class AsideConnector
-    implements Connector<LibraryTabState, AsideState> {
+    extends ConnOp<LibraryTabState, AsideState> {
   @override
   AsideState get(LibraryTabState state) {
     List<String> list = state.funcList.list.map((item) => item.name).toList();

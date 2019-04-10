@@ -35,17 +35,24 @@ Widget buildNavBar(
         ),
         Offstage(
           offstage: topBarVisible,
-          child: Row(
-            children: [
-              Icon(IconData(0xe60d, fontFamily: 'iconfont'), size: 18),
-              Padding(
-                padding: EdgeInsets.only(left: 5, top: 1),
-                child: Text(
-                  '搜索',
-                  style: TextStyle(fontSize: 16),
+          child: GestureDetector(
+            onTap: () {
+              if(state['actionCreator'] is Function) {
+                dispatch(state['actionCreator']());
+              }
+            },
+            child: Row(
+              children: [
+                Icon(IconData(0xe60d, fontFamily: 'iconfont'), size: 18),
+                Padding(
+                  padding: EdgeInsets.only(left: 5, top: 1),
+                  child: Text(
+                    '搜索',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],
