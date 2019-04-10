@@ -35,26 +35,30 @@ Widget buildView(
     child: CustomScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       controller: state.sController,
-      slivers: <Widget>[
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              if (index == adapter.itemCount - 1) {
-                final List<Widget> list = [adapter.itemBuilder(context, index)];
+      slivers: List.generate(
+        adapter.itemCount,
+        (index) {
+          return SliverToBoxAdapter(
+            child: Builder(
+              builder: (BuildContext context) {
+                if (index == adapter.itemCount - 1) {
+                  final List<Widget> list = [
+                    adapter.itemBuilder(context, index)
+                  ];
 
-                if (state.pageState.isLoading) {
-                  list.insert(0, loadingBar());
+                  if (state.pageState.isLoading) {
+                    list.insert(0, loadingBar());
+                  }
+
+                  return Column(children: list);
+                } else {
+                  return adapter.itemBuilder(context, index);
                 }
-
-                return Column(children: list);
-              } else {
-                return KeepAliveWrapper(adapter.itemBuilder(context, index));
-              }
-            },
-            childCount: adapter.itemCount,
-          ),
-        )
-      ],
+              },
+            ),
+          );
+        },
+      ),
     ),
   );
 //      child: ListView.builder(

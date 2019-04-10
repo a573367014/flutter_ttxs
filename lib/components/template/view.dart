@@ -60,6 +60,8 @@ Widget _getPriceIcon(TemplateState state) {
 Widget buildView(
     TemplateState state, Dispatch dispatch, ViewService viewService) {
   return Container(
+    width: state.previewInfo.showWidth,
+    height: state.previewInfo.showHeight,
     decoration: BoxDecoration(
         color: Color(0xffeeeeee), borderRadius: BorderRadius.circular(6)),
     child: Stack(alignment: Alignment.center, children: <Widget>[

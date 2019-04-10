@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:math';
 
 import '../../models/templates.dart';
 import '../../models/attributes.dart';
@@ -44,7 +45,7 @@ bool _init(Action action, Context<LibraryTabState> ctx) {
     ctx.dispatch(LibraryTabActionCreator.updateFuncList(attrState.func));
   }).then((data) {
     ctx.dispatch(LibraryTabActionCreator.onLoadTemplate(params: {
-      'page_size': ctx.state.templateList.pageState.size + 2000,
+      'page_size': ctx.state.templateList.pageState.size,
       'page_num': 1,
     }));
   });
@@ -135,11 +136,18 @@ bool _asideChange(Action action, Context<LibraryTabState> ctx) {
     final RenderBox box = ctx.state.asideKey.currentContext.findRenderObject();
 
     // height: 54 marginBottom 48
-    double offsetTop = (54.0 + 48.0) * action.payload.toDouble();
-    offsetTop = Ui.get().sw(offsetTop + 48);
+    double offsetTop = Ui.get().sw(
+        (54.0 + 48.0) * action.payload.toDouble() + 48
+    );
+    // paddingBottom: 120;
+    double maxOffsetTop = Ui.get().sw(
+        (54.0 + 48.0) * ctx.state.funcList.list.length + 120
+    ) - box.size.height;
+
+    double dy = offsetTop - box.size.height/2;
 
     ctx.state.asideSController.animateTo(
-        offsetTop - box.size.height/2,
+        min(maxOffsetTop, max(0, dy)),
         duration: Duration(milliseconds: 200),
         curve: Curves.easeIn
     );

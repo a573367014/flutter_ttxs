@@ -36,6 +36,7 @@ Widget buildNavBar(
         Offstage(
           offstage: topBarVisible,
           child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () {
               if(state['actionCreator'] is Function) {
                 dispatch(state['actionCreator']());

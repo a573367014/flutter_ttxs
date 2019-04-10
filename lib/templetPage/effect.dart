@@ -49,7 +49,7 @@ void _init(Action action, Context<IndexPageState> ctx) {
 
           ctx.state.topBarState.controller.animateTo(
             ctx.state.topBarVisible ? 0 : 1,
-            duration: Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 300),
           );
         },
       );

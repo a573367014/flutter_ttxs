@@ -5,7 +5,7 @@ import 'action.dart';
 import 'state.dart';
 
 class _TopBar extends AnimatedWidget {
-  Dispatch dispatch;
+  final Dispatch dispatch;
   _TopBar(Animation<double> animation, this.dispatch)
       : super(listenable: animation);
 
@@ -43,6 +43,7 @@ class _TopBar extends AnimatedWidget {
                             borderRadius: BorderRadius.circular(17),
                             border: Border.all(color: Color(0xffdddddd))),
                         child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
                           onTap: () {
                             dispatch(TopBarActionCreator.onPushSearch());
                           },

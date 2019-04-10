@@ -16,7 +16,7 @@ Widget buildView(
     height = min(state.list[0].previewInfo.showHeight, TEMPLATE_WIDTH * 16 / 9);
   }
 
-  return Container(
+  return height == 0 ? null : Container(
       height: height,
       child: ListView.builder(
           padding: EdgeInsets.symmetric(horizontal: 12),

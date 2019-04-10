@@ -4,13 +4,15 @@ import 'state.dart';
 
 Widget getTagItem(KeywordState data) {
   return Container(
+    width: 80,
+    height: 80,
     margin: EdgeInsets.symmetric(horizontal: 4),
     decoration: BoxDecoration(
         color: Colors.grey, borderRadius: BorderRadius.circular(6)),
     child: Stack(alignment: Alignment(0, 0.7), children: [
       ClipRRect(
           borderRadius: BorderRadius.circular(6),
-          child: Image.network(data.styleInfo.imgUrl,
+          child: Image.network(data.styleInfo.imgUrl + '?x-oss-process=image/resize,w_160/interlace,1',
               width: 80, height: 80, fit: BoxFit.cover)),
       Text(
         data.keyword,
